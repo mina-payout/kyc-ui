@@ -1,0 +1,17 @@
+html,
+body {
+  height: 100%;
+}
+
+.f-35 {
+  font-size: 35px;
+}
+
+.td-none {
+  text-decoration: none;
+}
+
+.overflow-y-scroll{
+    overflow-y: scroll;
+}
+
