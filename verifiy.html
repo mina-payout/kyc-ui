@@ -15,24 +15,21 @@
 
     <!-- MAIN -->
     <link rel="stylesheet" href="/assets/css/main.css" />
-
+    <script src="/assets/js/verfiy.js" defer></script>
     <title></title>
   </head>
   <body>
     <!-- HEAD -->
-    <div class="bg-dark d-flex justify-content-between">
-      <img
-        class="px-2 my-3"
-        src="/assets/images/trulico.png"
-        width="90"
-        height="21"
-        alt=""
-        srcset=""
-      />
+    <div class="bg-dark d-flex justify-content-end">
       <div class="text-white f-35 px-3 fw-light">x</div>
     </div>
 
-    <div class="container py-5">
+    <form
+      class="container py-5 needs-validation"
+      novalidate
+      action="/verifiy.html"
+      method="get"
+    >
       <!-- progress -->
       <div class="row justify-content-center position-relative g-0 mb-5">
         <div class="progress w-75" style="height: 5px; margin-top: 10px">
@@ -57,7 +54,7 @@
 
       <div class="row justify-content-center">
         <div class="w-75 d-flex align-items-center">
-          <h4 class="display-6 fw-light">Verify your identity</h4>
+          <h4 class="display-7 fw-light">Verify your identity</h4>
         </div>
       </div>
 
@@ -70,6 +67,7 @@
               class="form-control form-control-lg rounded-1 my-3"
               placeholder="First name"
               aria-label="First name"
+              required
             />
           </div>
           <div class="col">
@@ -78,6 +76,7 @@
               class="form-control form-control-lg rounded-1 my-3"
               placeholder="Last name"
               aria-label="Last name"
+              required
             />
           </div>
         </div>
@@ -91,7 +90,8 @@
               type="text"
               class="form-control form-control-lg rounded-1 my-3"
               placeholder="Date of birth"
-              aria-label="First name"
+              aria-label="Date of birth"
+              required
             />
           </div>
         </div>
@@ -100,12 +100,23 @@
       <!--  -->
       <div class="row justify-content-center">
         <div class="w-75 d-flex align-item-center">
+          <div class="col me-5">
+            <input
+              type="text"
+              class="form-control form-control-lg rounded-1 my-3"
+              placeholder="Address 1"
+              aria-label="Address 1"
+              required 
+            />
+          </div>
+
           <div class="col">
             <input
               type="text"
               class="form-control form-control-lg rounded-1 my-3"
-              placeholder="Address"
-              aria-label="Address"
+              placeholder="Address 2"
+              aria-label="Address 2"
+              required 
             />
           </div>
         </div>
@@ -120,6 +131,7 @@
               class="form-control form-control-lg rounded-1 my-3"
               placeholder="City"
               aria-label="City"
+              required
             />
           </div>
           <div class="col">
@@ -128,6 +140,7 @@
               class="form-control form-control-lg rounded-1 my-3"
               placeholder="Province"
               aria-label="Province"
+              required
             />
           </div>
         </div>
@@ -142,6 +155,7 @@
               class="form-control form-control-lg rounded-1 my-3"
               placeholder="Postal Code"
               aria-label="Postal Code"
+              required
             />
           </div>
           <div class="col">
@@ -150,6 +164,7 @@
               class="form-control form-control-lg rounded-1 my-3"
               placeholder="Country"
               aria-label="Country"
+              required
             />
           </div>
         </div>
@@ -160,8 +175,9 @@
         <div class="w-75 d-flex align-item-center">
           <div class="col-1">
             <select
-              class="form-select form-select-lg rounded-1  my-3  "
+              class="form-select form-select-lg rounded-1 my-3"
               aria-label="Default select example"
+              required
             >
               <option selected>+1</option>
               <option value="1">+2</option>
@@ -174,6 +190,7 @@
               class="form-control form-control-lg rounded-1 my-3"
               placeholder="Phone Number"
               aria-label="Phone Number"
+              required
             />
           </div>
         </div>
@@ -188,11 +205,12 @@
         >
 
         <div class="d-flex">
-          <a
+          <button
             href="/verfiyComplete.html"
             class="btn bg-primary text-light px-5 py-1 rounded-1"
             id="continue-btn"
-            >Verify Identity</a
+            type="submit"
+            >Submit</button
           >
         </div>
       </div>
@@ -201,6 +219,6 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"
       ></script>
-    </div>
+    </form>
   </body>
 </html>
