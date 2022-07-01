@@ -1,6 +1,12 @@
+@import url(//db.onlinewebfonts.com/c/78b9d143e25bae300c7c0a9567d1c3cf?family=Monument+Grotesk+Black);
+
+
+
+
 html,
 body {
   height: 100%;
+  font-family: 'Monument Grotesk', sans-serif !important;
 }
 
 .f-35 {
@@ -14,4 +20,3 @@ body {
 .overflow-y-scroll{
     overflow-y: scroll;
 }
-
