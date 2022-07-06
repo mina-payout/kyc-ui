@@ -1,0 +1,327 @@
+{
+  "id": "Australian",
+  "title": "DataFields",
+  "type": "object",
+  "properties": {
+    "PersonInfo": {
+      "title": "PersonInfo",
+      "type": "object",
+      "properties": {
+        "FirstGivenName": {
+          "type": "string",
+          "description": "First name of the individual to be verified",
+          "label": "First Name"
+        },
+        "MiddleName": {
+          "type": "string",
+          "description": "Second given name of the individual to be verified",
+          "label": "Middle Name"
+        },
+        "FirstSurName": {
+          "type": "string",
+          "description": "Last name of the individual to be verified",
+          "label": "Last Name"
+        },
+        "DayOfBirth": {
+          "type": "int",
+          "description": "Day of birth date (e.g. 23 for a date of birth of 23/11/1975)",
+          "label": "Day Of Birth"
+        },
+        "MonthOfBirth": {
+          "type": "int",
+          "description": "Month of birth date (e.g. 11 for a date of birth of 23/11/1975)",
+          "label": "Month Of Birth"
+        },
+        "YearOfBirth": {
+          "type": "int",
+          "description": "Year of birth date (e.g. 1975 for a date of birth of 23/11/1975)",
+          "label": "Year Of Birth"
+        },
+        "Gender": {
+          "type": "string",
+          "description": "Gender, may be 'M' for male or 'F' for female",
+          "label": "Gender"
+        }
+      },
+      "required": [
+        "DayOfBirth",
+        "FirstGivenName",
+        "FirstSurName",
+        "MonthOfBirth",
+        "YearOfBirth"
+      ]
+    },
+    "Location": {
+      "title": "Location",
+      "type": "object",
+      "properties": {
+        "BuildingNumber": {
+          "type": "string",
+          "description": "Street number of primary residence",
+          "label": "Street Number"
+        },
+        "UnitNumber": {
+          "type": "string",
+          "description": "Flat/Unit/Apartment number of primary residence",
+          "label": "Unit Number"
+        },
+        "StreetName": {
+          "type": "string",
+          "description": "Street name of primary residence",
+          "label": "Street Name"
+        },
+        "StreetType": {
+          "type": "string",
+          "description": "Street type of primary residence (e.g. St, Rd, etc.)",
+          "label": "Street Type"
+        },
+        "Suburb": {
+          "type": "string",
+          "description": "City or Suburb of primary residence",
+          "label": "Suburb"
+        },
+        "StateProvinceCode": {
+          "type": "string",
+          "description": "State of primary residence. US sources expect 2 characters. Australian sources expect 2 or 3 characters.",
+          "label": "State"
+        },
+        "PostalCode": {
+          "type": "string",
+          "description": "ZIP Code or Postal Code of primary residence",
+          "label": "Postal Code"
+        }
+      },
+      "required": [
+        "BuildingNumber",
+        "PostalCode",
+        "StateProvinceCode",
+        "StreetName",
+        "StreetType",
+        "Suburb"
+      ]
+    },
+
+
+
+    
+    "Communication": {
+      "title": "Communication",
+      "type": "object",
+      "properties": {
+        "MobileNumber": {
+          "type": "string",
+          "description": "Cellular phone number",
+          "label": "Cell Number"
+        },
+        "Telephone": {
+          "type": "string",
+          "description": "Telephone number of the individual to be verified",
+          "label": "Telephone"
+        },
+        "Telephone2": {
+          "type": "string",
+          "description": "Additional Phone/Mobile Number of the individual to be verified",
+          "label": "Telephone 2"
+        },
+        "EmailAddress": {
+          "type": "string",
+          "description": "Email Address",
+          "label": "Email Address"
+        }
+      },
+      "required": []
+    },
+    "DriverLicence": {
+      "title": "DriverLicence",
+      "type": "object",
+      "properties": {
+        "Number": {
+          "type": "string",
+          "description": "Driver's Licence Number of the individual to be verified",
+          "label": "Driver Licence Number"
+        }
+      },
+      "required": [
+        "Number"
+      ]
+    },
+    "NationalIds": {
+      "title": "NationalIds",
+      "type": "object",
+      "properties": {
+        "Number": {
+          "type": "string",
+          "description": "(10-digit Australian Medicare number)"
+        },
+        "Type": {
+          "type": "string",
+          "value": "health"
+        }
+      },
+      "required": [
+        "health"
+      ]
+    },
+    "Passport": {
+      "title": "Passport",
+      "type": "object",
+      "properties": {
+        "Number": {
+          "type": "string",
+          "description": "Passport number of the individual to be verified",
+          "label": "Passport Number"
+        }
+      },
+      "required": [
+        "Number"
+      ]
+    },
+    "CountrySpecific": {
+      "title": "CountrySpecific",
+      "type": "object",
+      "properties": {
+        "au": {
+          "title": "au",
+          "type": "object",
+          "properties": {
+            "AuImmiCardNumber": {
+              "type": "string",
+              "description": "Australian ImmiCard Number",
+              "label": "Au Immi Card Number"
+            },
+            "CitizenshipAcquisitionDay": {
+              "type": "string",
+              "description": "Day of month of acquisition of Citizenship Certificate, 2 digits (e.g. '14')",
+              "label": "Citizenship Acquisition Day"
+            },
+            "CitizenshipAcquisitionMonth": {
+              "type": "string",
+              "description": "Month of year of acquisition of Citizenship Certificate, 2 digits (e.g. '08')",
+              "label": "Citizenship Acquisition Month"
+            },
+            "CitizenshipAcquisitionYear": {
+              "type": "string",
+              "description": "Year of acquisition of Citizenship Certificate, 4 digits (e.g. '1986')",
+              "label": "Citizenship Acquisition Year"
+            },
+            "DriverLicenceState": {
+              "type": "string",
+              "description": "State of issue for Driver's Licence",
+              "label": "Driver Licence State"
+            },
+            "MedicareColor": {
+              "type": "string",
+              "description": "Color of Medicare Card: Green, Blue, or Yellow",
+              "label": "Medicare Color"
+            },
+            "MedicareMonthOfExpiry": {
+              "type": "string",
+              "description": "Month of year of expiration of Medicare Card, 2 digits (e.g. '08')",
+              "label": "Medicare Month Of Expiry"
+            },
+            "MedicareReference": {
+              "type": "string",
+              "description": "Medicare Reference Number",
+              "label": "Medicare Reference"
+            },
+            "MedicareYearOfExpiry": {
+              "type": "string",
+              "description": "Year of expiration of Medicare Card, 4 digits (e.g. '2015')",
+              "label": "Medicare Year Of Expiry"
+            },
+            "PassportCountry": {
+              "type": "string",
+              "description": "Passport Country (ISO 3166-1 alpha-2)",
+              "label": "Passport Country"
+            },
+            "RegistrationNumber": {
+              "type": "string",
+              "description": "Registration number",
+              "label": "Registration Number"
+            },
+            "RegistrationState": {
+              "type": "string",
+              "description": "State of registration",
+              "label": "Registration State"
+            },
+            "StockNumber": {
+              "type": "string",
+              "description": "Stock Number",
+              "label": "Stock Number"
+            },
+            "CertificateNumber": {
+              "type": "string",
+              "description": "Certificate number",
+              "label": "Certificate Number"
+            },
+            "CityOfBirth": {
+              "type": "string",
+              "description": "City of birth",
+              "label": "City Of Birth"
+            },
+            "CountryOfBirth": {
+              "type": "string",
+              "description": "Passport country of birth of the individual to be verified",
+              "label": "Country Of Birth"
+            },
+            "DayOfPrint": {
+              "type": "string",
+              "description": "Day of month the document was printed, 2 digits (e.g. '14')",
+              "label": "Day Of Print"
+            },
+            "DriverLicenceCardNumber": {
+              "type": "string",
+              "description": "A unique card number on each driver's licence to reduce fraud by allowing verification of the most recent licence using this unique identifier",
+              "label": "Driver Licence Card Number"
+            },
+            "IPAddress": {
+              "type": "string",
+              "description": "IP Address, either in IPv4 or IPv6 format",
+              "label": "IP Address"
+            },
+            "MedicareDayOfExpiry": {
+              "type": "string",
+              "description": "Day of month of expiration of Medicare Card, 2 digits (e.g. '14')",
+              "label": "Medicare Day Of Expiry"
+            },
+            "MonthOfPrint": {
+              "type": "string",
+              "description": "Month of year the document was printed, 2 digits (e.g. '08')",
+              "label": "Month Of Print"
+            },
+            "RegistrationYear": {
+              "type": "string",
+              "description": "Year of registration, 4 digits (e.g. '1980')",
+              "label": "Registration Year"
+            },
+            "StateOfBirth": {
+              "type": "string",
+              "description": "State of birth",
+              "label": "State Of Birth"
+            },
+            "YearOfPrint": {
+              "type": "string",
+              "description": "Year document was printed",
+              "label": "Year Of Print"
+            }
+          },
+          "required": [
+            "AuImmiCardNumber",
+            "CitizenshipAcquisitionDay",
+            "CitizenshipAcquisitionMonth",
+            "CitizenshipAcquisitionYear",
+            "DriverLicenceState",
+            "MedicareColor",
+            "MedicareMonthOfExpiry",
+            "MedicareReference",
+            "MedicareYearOfExpiry",
+            "PassportCountry",
+            "RegistrationNumber",
+            "RegistrationState",
+            "StockNumber"
+          ]
+        }
+      }
+    }
+  }
+}
