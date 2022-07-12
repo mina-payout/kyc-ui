@@ -1,7 +1,7 @@
 
 const initialize = async () => {
 
-
+    sessionStorage.clear()
     //API REQUEST 
     fetch('http://minakycservicedev-env.eba-zmicm36h.us-east-1.elasticbeanstalk.com/KYCService/getCountryCodes/', {
         mode: "cors",
@@ -38,10 +38,30 @@ initialize()
 const dropDown = document.getElementById("dropDown")
 
 dropDown.onchange = (e) => {
+    errorDiv.classList.add("d-none")
+
     sessionStorage.setItem("countySelected", e.target.value)
 }
 
 
 
+const button = document.getElementById("continue-btn")
+const errorDiv = document.getElementById("errorDiv")
 
+
+button.onclick = (event) => {
+    const selectedCountry = sessionStorage.getItem("countySelected")
+    const form = document.getElementById("selectedCountryForm")
+    if (!form.checkValidity() || selectedCountry === 'Countries' || selectedCountry === null) {
+        errorDiv.classList.remove("d-none")
+        event.preventDefault()
+        event.stopPropagation()
+    }
+    else {
+        console.log("form  vaild", form)
+        button.href = "/verifiy.html"
+    
+    }
+
+}
 
