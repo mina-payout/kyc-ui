@@ -1,4 +1,7 @@
 const selectedCountry = sessionStorage.getItem("countySelected")
+const verifyLocation = document.getElementById("locationInfo")
+const personInfo = document.getElementById("personInfo")
+
 
 console.log(sessionStorage.getItem("countySelected"))
 
@@ -7,48 +10,57 @@ $(function () {
   let selectedCountryName = selectedCountry.slice(0, 2).toLowerCase();
   console.log(selectedCountry.slice(0, 2).toLowerCase())
 
-  $.getJSON(`/assets/json/in.json`, (data) => {
+  $.getJSON(`http://minakycservicedev-env.eba-zmicm36h.us-east-1.elasticbeanstalk.com/KYCService/getRecommendedfields?countryCode=${selectedCountryName}`, (data) => {
 
     const formFields = document.getElementById("formFields")
     const formFieldsAddress = document.getElementById("formFieldsAddress")
 
-    // PersonInfo
-    const jsonObj = data["properties"]["PersonInfo"]["properties"]
-    const requiredKeys = data["properties"]["PersonInfo"]["required"]
 
-    // Location
-    const jsonObjLoc = data["properties"]["Location"]["properties"]
-    const requiredKeysLoc = data["properties"]["Location"]["required"]
+    if (data["properties"]["PersonInfo"]) {
 
-    console.log(data.id)
-
-    const keys = Object.keys(jsonObj)
-    const keysLoc = Object.keys(jsonObjLoc)
+      // PersonInfo
+      const jsonObj = data["properties"]["PersonInfo"]["properties"]
+      const requiredKeys = data["properties"]["PersonInfo"]["required"]
+      const keys = Object.keys(jsonObj)
 
 
-    keys.map((key) => {
+      keys.map((key) => {
 
-      const field = jsonObj[key]
-      formFields.innerHTML += ` 
-              <div class="col">
-                <div  class="form-floating">
-                  <input
-                    type= "${field.type === "string" ? "text" : "number"}"
-                    class="form-control w-100"
-                    id="${key}"
-                    placeholder="name@example.com"
-                    ${requiredKeys.includes(key) ? "required" : ""}
-                  />
-                  <label class="text-black-50 fs-6" for="${key}">${field.label}</label>
-                </div>
+        const field = jsonObj[key]
+        formFields.innerHTML += ` 
+            <div class="col">
+              <div  class="form-floating">
+                <input
+                  type= "${field.type === "string" ? "text" : "number"}"
+                  class="form-control w-100"
+                  id="${key}"
+                  placeholder="name@example.com"
+                  ${requiredKeys.includes(key) ? "required" : ""}
+                />
+                <label class="text-black-50 fs-6" for="${key}">${field.label}</label>
               </div>
-          `
-    })
+            </div>
+        `
+      })
+    }
+    else {
+      personInfo.classList.add("d-none")
+    }
 
-    keysLoc.map((key) => {
 
-      const field = jsonObjLoc[key]
-      formFieldsAddress.innerHTML += ` 
+    if (data["properties"]["Location"]) {
+
+
+      // Location
+      const jsonObjLoc = data["properties"]["Location"]["properties"]
+      const requiredKeysLoc = data["properties"]["Location"]["required"]
+      const keysLoc = Object.keys(jsonObjLoc)
+
+
+      keysLoc.map((key) => {
+
+        const field = jsonObjLoc[key]
+        formFieldsAddress.innerHTML += ` 
               <div class="col">
                 <div  class="form-floating ">
                   <input
@@ -62,9 +74,17 @@ $(function () {
                 </div>
               </div>
           `
-    })
+      })
+    }
+    else {
+      verifyLocation.classList.add("d-none")
+    }
 
 
+
+  }, (error) => {
+    console.error(error)
+    window.location.reload()
   });
 });
 
@@ -96,6 +116,10 @@ $(function () {
 
 })()
 
+
+setTimeout(() => {
+  document.getElementById('loading-spinner').classList.add('d-none')
+}, 2000);
 
 
 

@@ -15,7 +15,7 @@
 
     <!-- MAIN -->
     <link rel="stylesheet" href="/assets/css/main.css" />
-    <script src="/assets/js/country.js"  defer></script>
+    <script src="/assets/js/country.js" defer></script>
 
     <title></title>
   </head>
@@ -25,7 +25,7 @@
       <div class="text-white f-35 px-3 fw-light">x</div>
     </div>
 
-    <form class="container py-5">
+    <form class="container py-5" id="selectedCountryForm" novalidate>
       <!-- progress -->
       <div class="row justify-content-center position-relative g-0 mb-5">
         <div class="progress w-75" style="height: 5px; margin-top: 10px">
@@ -58,9 +58,13 @@
               id="dropDown"
               class="form-select form-select-lg mb-3 h-25"
               aria-label=".form-select-lg example"
+              required
             >
               <option selected>Countries</option>
             </select>
+            <div class="w-75 text-danger d-none" id="errorDiv">
+              *Error: Please select the country
+            </div>
           </div>
         </div>
       </div>
@@ -75,11 +79,11 @@
 
         <div class="d-flex">
           <a
-            href="/verifiy.html"
             class="btn bg-primary text-light px-5 py-1 rounded-1"
             id="continue-btn"
-            >Continue</a
           >
+            Continue
+          </a>
         </div>
       </div>
     </form>
