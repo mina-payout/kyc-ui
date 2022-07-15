@@ -20,6 +20,17 @@
     <title></title>
   </head>
   <body>
+    <!-- LOADING -->
+    <div
+      id="loading-spinner"
+      class="position-absolute bg-light bg-opacity-50 d-flex align-items-center justify-content-center"
+      style="top: 0; left: 0; right: 0; bottom: 0; z-index: 1"
+    >
+      <div class="spinner-border text-success" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
     <!-- HEAD -->
     <div class="bg-dark d-flex justify-content-end">
       <div class="text-white f-35 px-3 fw-light">x</div>
@@ -87,7 +98,6 @@
         </div>
       </div>
     </form>
-    >
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
