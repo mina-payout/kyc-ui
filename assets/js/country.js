@@ -65,3 +65,6 @@ button.onclick = (event) => {
 
 }
 
+setTimeout(() => {
+    document.getElementById('loading-spinner').classList.add('d-none')
+  }, 1000);

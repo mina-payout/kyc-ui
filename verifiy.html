@@ -41,8 +41,7 @@
     <form
       class="container py-5 needs-validation"
       novalidate
-      action="/verifiy.html"
-      method="get"
+      action="javascript:formSubmit()"
     >
       <!-- progress -->
       <div class="row justify-content-center position-relative g-0 mb-5">
@@ -78,13 +77,18 @@
         <div class=" w-75 mt-4 ms-3">
           <h5 class="display-7 fw-light" id="personInfo">Person Info</h5>
         </div>
-
         <div class="row row-cols-2 g-4 w-75 mt-0" id="formFields">
         </div>
+
         <div class=" w-75 mt-5 ms-3">
           <h5 class="display-7 fw-light" id="locationInfo">Location Info </h5>
         </div>
         <div class="row row-cols-2 g-4 w-75 mt-0" id="formFieldsAddress"></div>
+
+        <div class=" w-75 mt-5 ms-3">
+          <h5 class="display-7 fw-light" id="communicationInfo">Communication Info </h5>
+        </div>
+        <div class="row row-cols-2 g-4 w-75 mt-0" id="formFieldsCommunication"></div>
       </div>
 
       <!-- Buttons -->
@@ -97,7 +101,6 @@
 
         <div class="d-flex">
           <button
-            href="/verfiyComplete.html"
             class="btn bg-primary text-light px-5 py-1 rounded-1"
             id="continue-btn"
             type="submit"
