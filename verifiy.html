@@ -6,12 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- BOOTSTRAP -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
 
     <!-- MAIN -->
     <link rel="stylesheet" href="/assets/css/main.css" />
@@ -19,15 +14,11 @@
     <title></title>
 
     <!--cus ajax  -->
-    <script
-      type="text/javascript"
-      src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"
-    ></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
   </head>
   <body>
-
     <!-- LOADING -->
-    <div id="loading-spinner" class="position-absolute bg-light bg-opacity-50 d-flex align-items-center justify-content-center" style="top: 0; left: 0; right: 0; bottom: 0; z-index: 1;">
+    <div id="loading-spinner" class="position-absolute bg-light bg-opacity-50 d-flex align-items-center justify-content-center" style="top: 0; left: 0; right: 0; bottom: 0; z-index: 1">
       <div class="spinner-border text-success" role="status">
         <span class="visually-hidden">Loading...</span>
       </div>
@@ -38,30 +29,15 @@
       <div class="text-white f-35 px-3 fw-light">x</div>
     </div>
 
-    <form
-      class="container py-5 needs-validation"
-      novalidate
-      action="javascript:formSubmit()"
-    >
+    <form class="container py-5 needs-validation" novalidate action="javascript:formSubmit()">
       <!-- progress -->
       <div class="row justify-content-center position-relative g-0 mb-5">
         <div class="progress w-75" style="height: 5px; margin-top: 10px">
-          <div
-            class="progress-bar bg-primary"
-            role="progressbar"
-            style="width: 50%"
-            aria-valuenow="50"
-            aria-valuemin="0"
-            aria-valuemax="100"
-          ></div>
+          <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
 
         <div class="d-flex position-absolute justify-content-end">
-          <img
-            src="/assets/images/person.png"
-            style="width: 15px; height: 20px"
-            alt=""
-          />
+          <img src="/assets/images/person.png" style="width: 15px; height: 20px" alt="" />
         </div>
       </div>
 
@@ -74,46 +50,33 @@
 
       <!--  -->
       <div class="row justify-content-center">
-        <div class=" w-75 mt-4 ms-3">
+        <div class="w-75 mt-4 ms-3">
           <h5 class="display-7 fw-light" id="personInfo">Person Info</h5>
         </div>
-        <div class="row row-cols-2 g-4 w-75 mt-0" id="formFields">
-        </div>
+        <div class="row row-cols-2 g-4 w-75 mt-0" id="formFields"></div>
 
-        <div class=" w-75 mt-5 ms-3">
-          <h5 class="display-7 fw-light" id="locationInfo">Location Info </h5>
+        <div class="w-75 mt-5 ms-3">
+          <h5 class="display-7 fw-light" id="locationInfo">Location Info</h5>
         </div>
         <div class="row row-cols-2 g-4 w-75 mt-0" id="formFieldsAddress"></div>
 
-        <div class=" w-75 mt-5 ms-3">
-          <h5 class="display-7 fw-light" id="communicationInfo">Communication Info </h5>
+        <div class="w-75 mt-5 ms-3">
+          <h5 class="display-7 fw-light" id="communicationInfo">Communication Info</h5>
         </div>
         <div class="row row-cols-2 g-4 w-75 mt-0" id="formFieldsCommunication"></div>
       </div>
 
       <!-- Buttons -->
       <div class="d-flex justify-content-between mt-5">
-        <a
-          href="/selectCountry.html"
-          class="btn btn-light px-5 py-1 rounded-1 border-primary"
-          >Back</a
-        >
+        <a href="/selectCountry.html" class="btn btn-light px-5 py-1 rounded-1 border-primary">Back</a>
 
         <div class="d-flex">
-          <button
-            class="btn bg-primary text-light px-5 py-1 rounded-1"
-            id="continue-btn"
-            type="submit"
-          >
-            Submit
+          <button class="btn bg-primary text-light px-5 py-1 rounded-1" id="continue-btn" type="submit">
+            <a id="anchorTag">Submit</a>
           </button>
         </div>
       </div>
-      <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"
-      ></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     </form>
   </body>
 </html>
