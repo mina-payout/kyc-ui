@@ -15,93 +15,107 @@ $(function () {
     (data) => {
       resultData = data;
 
-      const formFields = document.getElementById('formFields');
-      const formFieldsAddress = document.getElementById('formFieldsAddress');
-      const formFieldsCommunication = document.getElementById('formFieldsCommunication');
+      if (resultData.status === 200) {
 
-      //PersonInfo
-      if (data['properties']['PersonInfo']) {
-        // PersonInfo
-        const jsonObj = data['properties']['PersonInfo']['properties'];
-        const requiredKeys = data['properties']['PersonInfo']['required'];
-        const keys = Object.keys(jsonObj);
+        const formFields = document.getElementById('formFields');
+        const formFieldsAddress = document.getElementById('formFieldsAddress');
+        const formFieldsCommunication = document.getElementById('formFieldsCommunication');
 
-        keys.map((key) => {
-          const field = jsonObj[key];
-          formFields.innerHTML += ` 
-            <div class="col">
-              <div  class="form-floating">
-                <input
-                  type= "${field.type}"
-                  class="form-control w-100"
-                  id="${key}"
-                  placeholder="name@example.com"
-                  ${requiredKeys.includes(key) ? 'required' : ''}
-                
-                />
-                <label class="text-black-50 fs-6" for="${key}">${field.label}</label>
-              </div>
-            </div>
-        `;
-        });
-      } else {
-        personInfo.classList.add('d-none');
-      }
+        //PersonInfo
+        if (data['properties']['PersonInfo']) {
+          // PersonInfo
+          const jsonObj = data['properties']['PersonInfo']['properties'];
+          const requiredKeys = data['properties']['PersonInfo']['required'];
+          const keys = Object.keys(jsonObj);
 
-      //Location
-      if (data['properties']['Location']) {
-        // Location
-        const jsonObjLoc = data['properties']['Location']['properties'];
-        const requiredKeysLoc = data['properties']['Location']['required'];
-        const keysLoc = Object.keys(jsonObjLoc);
-
-        keysLoc.map((key) => {
-          const field = jsonObjLoc[key];
-          formFieldsAddress.innerHTML += ` 
+          keys.map((key) => {
+            const field = jsonObj[key];
+            formFields.innerHTML += ` 
               <div class="col">
-                <div  class="form-floating ">
+                <div  class="form-floating">
                   <input
-                    type= "${field.type === 'string' ? 'text' : 'number'}"
-                    class="form-control w-100 "
+                    type= "${field.type}"
+                    class="form-control w-100"
                     id="${key}"
                     placeholder="name@example.com"
-                    ${requiredKeysLoc.includes(key) ? 'required' : ''}
+                    ${requiredKeys.includes(key) ? 'required' : ''}
+                  
                   />
-                  <label class="text-black-50 fs-6 " for="${key}">${field.label}</label>
+                  <label class="text-black-50 fs-6" for="${key}">${field.label}</label>
                 </div>
               </div>
           `;
-        });
-      } else {
-        verifyLocation.classList.add('d-none');
-      }
+          });
+        } else {
+          personInfo.classList.add('d-none');
+        }
 
-      //Communication
-      if (data['properties']['Communication']) {
-        const jsonObjCom = data['properties']['Communication']['properties'];
-        const requiredKeysCom = data['properties']['Communication']['required'];
-        const keysCom = Object.keys(jsonObjCom);
+        //Location
+        if (data['properties']['Location']) {
+          // Location
+          const jsonObjLoc = data['properties']['Location']['properties'];
+          const requiredKeysLoc = data['properties']['Location']['required'];
+          const keysLoc = Object.keys(jsonObjLoc);
 
-        keysCom.map((key) => {
-          const field = jsonObjCom[key];
-          formFieldsCommunication.innerHTML += ` 
-              <div class="col">
-                <div  class="form-floating ">
-                  <input
-                    type= "${field.type === 'string' ? 'text' : 'number'}"
-                    class="form-control w-100 "
-                    id="${key}"
-                    placeholder="name@example.com"
-                    ${requiredKeysCom.includes(key) ? 'required' : ''}
-                  />
-                  <label class="text-black-50 fs-6 " for="${key}">${field.label}</label>
+          keysLoc.map((key) => {
+            const field = jsonObjLoc[key];
+            formFieldsAddress.innerHTML += ` 
+                <div class="col">
+                  <div  class="form-floating ">
+                    <input
+                      type= "${field.type === 'string' ? 'text' : 'number'}"
+                      class="form-control w-100 "
+                      id="${key}"
+                      placeholder="name@example.com"
+                      ${requiredKeysLoc.includes(key) ? 'required' : ''}
+                    />
+                    <label class="text-black-50 fs-6 " for="${key}">${field.label}</label>
+                  </div>
                 </div>
-              </div>
-          `;
-        });
-      } else {
-        communicationInfo.classList.add('d-none');
+            `;
+          });
+        } else {
+          verifyLocation.classList.add('d-none');
+        }
+
+        //Communication
+        if (data['properties']['Communication']) {
+          const jsonObjCom = data['properties']['Communication']['properties'];
+          const requiredKeysCom = data['properties']['Communication']['required'];
+          const keysCom = Object.keys(jsonObjCom);
+
+          keysCom.map((key) => {
+            const field = jsonObjCom[key];
+            formFieldsCommunication.innerHTML += ` 
+                <div class="col">
+                  <div  class="form-floating ">
+                    <input
+                      type= "${field.type === 'string' ? 'text' : 'number'}"
+                      class="form-control w-100 "
+                      id="${key}"
+                      placeholder="name@example.com"
+                      ${requiredKeysCom.includes(key) ? 'required' : ''}
+                    />
+                    <label class="text-black-50 fs-6 " for="${key}">${field.label}</label>
+                  </div>
+                </div>
+            `;
+          });
+        } else {
+          communicationInfo.classList.add('d-none');
+        }
+
       }
+
+
+      else {
+        console.log('error')
+
+        new Toaster("Something went Wrong")
+
+      }
+
+
     },
     (error) => {
       console.error(error);
