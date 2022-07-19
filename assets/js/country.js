@@ -1,3 +1,4 @@
+const errorPop = document.getElementById("errorPop")
 
 const initialize = async () => {
 
@@ -13,20 +14,32 @@ const initialize = async () => {
 
         .then(response => response.json())
         .then(response => {
-            const body = response
-            const responseKey = Object.keys(body)
-            const responseValue = Object.values(body)
 
-            // 
-            responseValue.map((country, index) => {
-                const option = document.createElement("option")
-                option.innerHTML = country
-                option.value = responseKey[index]
 
-                const li1 = document.body.appendChild(option)
-                dropDown.appendChild(li1)
-                li1.classList.add('list-group-item', 'bg-light')
-            })
+            if (response.status === 200) {
+                const body = response
+                const responseKey = Object.keys(body)
+                const responseValue = Object.values(body)
+
+                // 
+                responseValue.map((country, index) => {
+                    const option = document.createElement("option")
+                    option.innerHTML = country
+                    option.value = responseKey[index]
+
+                    const li1 = document.body.appendChild(option)
+                    dropDown.appendChild(li1)
+                    li1.classList.add('list-group-item', 'bg-light')
+                })
+
+            }
+            else {
+                console.log('error')
+
+                new Toaster("Something went Wrong")
+
+            }
+
 
         })
         .catch((error) => {
@@ -60,11 +73,11 @@ button.onclick = (event) => {
     else {
         console.log("form  vaild", form)
         button.href = "/verifiy.html"
-    
+
     }
 
 }
 
 setTimeout(() => {
     document.getElementById('loading-spinner').classList.add('d-none')
-  }, 1000);
+}, 1000);
