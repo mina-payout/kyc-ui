@@ -13,10 +13,15 @@ const initialize = async () => {
     })
 
         .then(response => response.json())
+        .catch((error) => {
+            console.log(error);
+            new Toaster("Something went Wrong")
+
+
+        })
         .then(response => {
 
-
-            if (response.status === 200) {
+            if (response != null) {
                 const body = response
                 const responseKey = Object.keys(body)
                 const responseValue = Object.values(body)
@@ -31,11 +36,9 @@ const initialize = async () => {
                     dropDown.appendChild(li1)
                     li1.classList.add('list-group-item', 'bg-light')
                 })
-
             }
-            else {
-                console.log('error')
 
+            else {
                 new Toaster("Something went Wrong")
 
             }
@@ -44,6 +47,9 @@ const initialize = async () => {
         })
         .catch((error) => {
             console.log(error);
+            new Toaster("Something went Wrong")
+
+
         })
 }
 initialize()
