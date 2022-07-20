@@ -14,8 +14,8 @@ $(function () {
     `http://minakycservicedev-env.eba-zmicm36h.us-east-1.elasticbeanstalk.com/KYCService/getRecommendedfields?countryCode=${selectedCountryName}`,
     (data) => {
       resultData = data;
+      console.log(resultData)
 
-      if (resultData.status === 200) {
 
         const formFields = document.getElementById('formFields');
         const formFieldsAddress = document.getElementById('formFieldsAddress');
@@ -105,15 +105,14 @@ $(function () {
           communicationInfo.classList.add('d-none');
         }
 
-      }
 
 
-      else {
-        console.log('error')
+      // else {
+      //   console.log('error')
 
-        new Toaster("Something went Wrong")
+      //   new Toaster("Something went Wrong")
 
-      }
+      // }
 
 
     },
@@ -205,8 +204,8 @@ const formSubmit = () => {
   })
     // .then((response) => response.json())
     .then((response) => {
-      anchorTag.href = 'verfiyComplete.html';
-      console.log('verfiyComplete:', response);
+      anchorTag.href = 'trulioEmbedId.html';
+      console.log('trulioEmbedId:', response);
       anchorTag.click();
     })
     .catch((error) => {
@@ -220,3 +219,5 @@ const formSubmit = () => {
 setTimeout(() => {
   document.getElementById('loading-spinner').classList.add('d-none');
 }, 2000);
+
+
