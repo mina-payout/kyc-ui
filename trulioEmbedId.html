@@ -12,6 +12,7 @@
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
 
     <script type="text/javascript" src="https://js.trulioo.com/latest/main.js"></script>
+    <script src="/assets/js/trulioEmbed.js" defer></script>
 </head>
 
 <body>
@@ -25,25 +26,9 @@
     </div>
 
 
-    <div id="trulioo-embedid"></div>
-    <script>
-
-        function handleResponse(e) {
-            console.log('handleResponse', e);
-        }
-
-        const publicKey = '745b24a3850c4ca6b16255ff59289cd3'; // Public Key
-        const accessTokenURL = 'http://minakycservicedev-env.eba-zmicm36h.us-east-1.elasticbeanstalk.com/KYCService';
-        new TruliooClient({
-            publicKey,
-            accessTokenURL,
-            handleResponse
-        });
-
-        setTimeout(() => {
-            document.getElementById('loading-spinner').classList.add('d-none');
-        }, 4000);
-    </script>
+    <div id="trulioo-embedid" class="container" ></div>
+   
+    
 </body>
 
 </html>

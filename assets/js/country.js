@@ -10,19 +10,12 @@ const initialize = async () => {
         headers: {
             "Accept": "application/json"
         }
-    })
+    }
+    )
+        .then(async (response) => {
 
-        .then(response => response.json())
-        .catch((error) => {
-            console.log(error);
-            new Toaster("Something went Wrong")
-
-
-        })
-        .then(response => {
-
-            if (response != null) {
-                const body = response
+            if (response.status === 200) {
+                const body = await response.json()
                 const responseKey = Object.keys(body)
                 const responseValue = Object.values(body)
 
@@ -42,15 +35,16 @@ const initialize = async () => {
                 new Toaster("Something went Wrong")
 
             }
-
+            document.getElementById('loading-spinner').classList.add('d-none')
 
         })
         .catch((error) => {
             console.log(error);
             new Toaster("Something went Wrong")
 
-
+            document.getElementById('loading-spinner').classList.add('d-none')
         })
+
 }
 initialize()
 
@@ -83,7 +77,3 @@ button.onclick = (event) => {
     }
 
 }
-
-setTimeout(() => {
-    document.getElementById('loading-spinner').classList.add('d-none')
-}, 1000);

@@ -10,11 +10,24 @@ $(function () {
   let selectedCountryName = selectedCountry.slice(0, 2).toLowerCase();
   console.log(selectedCountry.slice(0, 2).toLowerCase());
 
-  $.getJSON(
-    `http://minakycservicedev-env.eba-zmicm36h.us-east-1.elasticbeanstalk.com/KYCService/getRecommendedfields?countryCode=${selectedCountryName}`,
-    (data) => {
-      resultData = data;
-      console.log(resultData)
+
+
+
+
+  //API REQUEST 
+  fetch(`http://minakycservicedev-env.eba-zmicm36h.us-east-1.elasticbeanstalk.com/KYCService/getRecommendedfields?countryCode=${selectedCountryName}`, {
+    mode: "cors",
+    method: "GET",
+    headers: {
+      "Accept": "application/json"
+    }
+  }
+  )
+    .then(async (response) => {
+
+      if (response.status === 200) {
+        const data = await response.json()
+        resultData = data;
 
 
         const formFields = document.getElementById('formFields');
@@ -105,22 +118,23 @@ $(function () {
           communicationInfo.classList.add('d-none');
         }
 
+      }
+
+      else {
+        new Toaster("Something went Wrong")
+
+      }
+      document.getElementById('loading-spinner').classList.add('d-none')
+
+    })
+    .catch((error) => {
+      new Toaster("Something went Wrong")
+
+      document.getElementById('loading-spinner').classList.add('d-none')
+    })
 
 
-      // else {
-      //   console.log('error')
 
-      //   new Toaster("Something went Wrong")
-
-      // }
-
-
-    },
-    (error) => {
-      console.error(error);
-      window.location.reload();
-    }
-  );
 });
 
 (() => {
@@ -216,8 +230,5 @@ const formSubmit = () => {
   console.log(jsonObject);
 };
 
-setTimeout(() => {
-  document.getElementById('loading-spinner').classList.add('d-none');
-}, 2000);
 
 
