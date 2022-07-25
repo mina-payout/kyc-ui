@@ -3,6 +3,8 @@ const verifyLocation = document.getElementById('locationInfo');
 const communicationInfo = document.getElementById('communicationInfo');
 const personInfo = document.getElementById('personInfo');
 const anchorTag = document.getElementById('anchorTag');
+const userEmail = window.sessionStorage.getItem('userEmail');
+const userPublicKey = window.sessionStorage.getItem('userPublicKey');
 
 let resultData;
 
@@ -10,25 +12,18 @@ $(function () {
   let selectedCountryName = selectedCountry.slice(0, 2).toLowerCase();
   console.log(selectedCountry.slice(0, 2).toLowerCase());
 
-
-
-
-
-  //API REQUEST 
+  //API REQUEST
   fetch(`http://minakycservicedev-env.eba-zmicm36h.us-east-1.elasticbeanstalk.com/KYCService/getRecommendedfields?countryCode=${selectedCountryName}`, {
-    mode: "cors",
-    method: "GET",
+    mode: 'cors',
+    method: 'GET',
     headers: {
-      "Accept": "application/json"
-    }
-  }
-  )
+      Accept: 'application/json',
+    },
+  })
     .then(async (response) => {
-
       if (response.status === 200) {
-        const data = await response.json()
+        const data = await response.json();
         resultData = data;
-
 
         const formFields = document.getElementById('formFields');
         const formFieldsAddress = document.getElementById('formFieldsAddress');
@@ -117,24 +112,16 @@ $(function () {
         } else {
           communicationInfo.classList.add('d-none');
         }
-
+      } else {
+        new Toaster('Something went Wrong');
       }
-
-      else {
-        new Toaster("Something went Wrong")
-
-      }
-      document.getElementById('loading-spinner').classList.add('d-none')
-
+      document.getElementById('loading-spinner').classList.add('d-none');
     })
     .catch((error) => {
-      new Toaster("Something went Wrong")
+      new Toaster('Something went Wrong');
 
-      document.getElementById('loading-spinner').classList.add('d-none')
-    })
-
-
-
+      document.getElementById('loading-spinner').classList.add('d-none');
+    });
 });
 
 (() => {
@@ -168,6 +155,8 @@ const formSubmit = () => {
   let jsonObject = {};
 
   jsonObject.CountryCode = selectedCountry.slice(0, 2).toUpperCase();
+  jsonObject.PublicKey = userPublicKey;
+  jsonObject.PublicKEmailAddressey = userEmail;
   jsonObject.DataFields = {};
 
   // PersonInfo
@@ -199,11 +188,10 @@ const formSubmit = () => {
 
   if (resultData['properties']['Communication']) {
     const jsonObjCom = resultData['properties']['Communication']['properties'];
-    console.log(jsonObjCom);
     const keysLoc = Object.keys(jsonObjCom);
     keysLoc.map((key) => {
       const inputKey = document.getElementById(key);
-      jsonObject.DataFields.Location[inputKey.id] = inputKey.value;
+      jsonObject.DataFields.Communication[inputKey.id] = inputKey.value;
     });
   }
 
@@ -229,6 +217,3 @@ const formSubmit = () => {
 
   console.log(jsonObject);
 };
-
-
-

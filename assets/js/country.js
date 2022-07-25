@@ -2,7 +2,7 @@ const errorPop = document.getElementById("errorPop")
 
 const initialize = async () => {
 
-    sessionStorage.clear()
+    sessionStorage.removeItem("countySelected")
     //API REQUEST 
     fetch('http://minakycservicedev-env.eba-zmicm36h.us-east-1.elasticbeanstalk.com/KYCService/getCountryCodes/', {
         mode: "cors",
