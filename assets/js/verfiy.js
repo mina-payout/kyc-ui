@@ -109,6 +109,7 @@ $(function () {
                 </div>
             `;
           });
+          document.getElementById('EmailAddress').value = userEmail;
         } else {
           communicationInfo.classList.add('d-none');
         }
